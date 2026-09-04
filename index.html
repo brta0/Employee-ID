@@ -1,205 +1,317 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
-<meta charset="UTF-8" />
+<meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Employee Verification - AJHARUL ISLAM</title>
+<title>EMPLOYEE ID CARD</title>
 
 <style>
-body {
-  font-family: "Segoe UI", Arial, sans-serif;
-  background: linear-gradient(135deg, #e9eef5, #f7f9fc);
-  margin: 0;
-  padding: 20px;
+* {
+  box-sizing: border-box;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
 }
 
-.container {
-  max-width: 520px;
-  margin: auto;
+body {
+  margin: 0;
+  background:#f0f3f7;
+  display:flex;
+  gap:20px;
+  flex-wrap:wrap;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+  font-family: Arial, sans-serif;
+}
+
+/* CARD */
+.card {
+  width: 54mm;
+  height: 85.6mm;
   background: #ffffff;
-  padding: 24px;
-  border-radius: 14px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
   position: relative;
   overflow: hidden;
+  border-left: 0.8mm solid #0f2a44;
+  border-right: 0.8mm solid #0f2a44;
 }
 
-/* ===== WATERMARK ===== */
-.watermark {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-}
-.watermark img {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  max-width: 65%;
-  opacity: 0.19;
-}
-
-/* Content */
-.content {
-  position: relative;
-  z-index: 1;
-}
-
-/* Header */
+/* ===== FRONT HEADER ===== */
 .header {
+  background: #0f2a44;   /* PVC-friendly deep navy */
+  color: #ffffff;
+  padding: 0.07in;       /* thinner */
   text-align: center;
-  padding-bottom: 14px;
-  border-bottom: 2px solid #2f80ed;
-}
-.header h1 {
-  margin: 0;
-  font-size: 22px;
-  color: #1a1a1a;
-}
-.header p {
-  margin: 6px 0 0;
-  font-size: 14px;
-  color: #555;
+  font-weight: bold;
+  font-size: .17in;
 }
 
-/* Info Grid */
-.info-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-  margin-top: 18px;
+/* ===== BACK HEADER ===== */
+.header.thin {
+  background: #2c2c2c;
+  color: #ffffff;
+  padding: 0.07in;
+  font-size: .1in;
+  font-weight: normal;
 }
 
-.info-box {
-  background: #f4f7fb;
-  padding: 10px 12px;
-  border-radius: 8px;
+/* ===== FRONT FOOTER ===== */
+.footer {
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  background:#0f2a44;   /* PVC-friendly */
+  color:#ffffff;
+  padding: 0.045in;     /* thinner */
+  text-align:center;
+  font-size: .085in;
+  font-weight:bold;
+}
+
+/* ===== BACK FOOTER ===== */
+.footer.back-footer {
+  background:#2c2c2c;
+  color:#ffffff;
+  padding: 0.04in;
+  font-size: .075in;
+  font-weight: normal;
+}
+
+/* FRONT BODY */
+.body {
+  padding: 0.10in 0.14in 0.12in;
+}
+
+.grid {
+  display:grid;
+  grid-template-columns: 0.9in 1fr;
+  gap: 0.08in;
+}
+
+.photo {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  background: #EAEAEA;
+  padding: 6px 3px;
+}
+
+.photo img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.barcode {
+  margin-top: 0.04in;
+}
+
+.barcode img {
+  max-width: 1.0in;
+  max-height: 0.3in;
 }
 
 .label {
-  font-size: 12px;
-  color: #555;
-  font-weight: 600;
+  font-size: .08in;
+  color:#555;
 }
+
 .value {
-  margin-top: 4px;
-  font-size: 15px;
-  color: #000;
-  font-weight: 700;
-}
-
-/* Rating */
-.rating {
-  margin-top: 14px;
-}
-.rating-stars {
-  color: #e3b341;
-  font-size: 20px;
+  font-size: .11in;
   font-weight: bold;
 }
 
-/* ===== APPLICATION / STATEMENT ===== */
-.statement {
-  margin-top: 22px;
-  padding-left: 14px;
-  border-left: 5px solid #2f80ed;
+.pair {
+  margin: .035in 0;
 }
 
-.statement-title {
-  font-size: 14px;
+.bottom {
+  margin-top: 0.08in;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.company {
+  text-align:center;
+  width: 1.0in;
+}
+
+.company img {
+  max-width: 0.6in;
+}
+
+.company .name {
+  font-size: .095in;
   font-weight: bold;
-  margin-bottom: 6px;
-  color: #2f80ed;
 }
 
-.statement-text {
-  font-size: 14px;
-  line-height: 1.65;
-  color: #222;
-  text-align: justify;
-  font-weight: 700; /* 🔹 TEXT BOLD */
+.divider {
+  width: 1px;
+  background: #ccc;
+  height: 0.75in;
 }
 
-/* Footer */
-.footer {
-  margin-top: 22px;
-  padding-top: 10px;
-  border-top: 1px dashed #bbb;
+.qr img {
+  max-width: 0.65in;
+}
+
+/* BACK BODY */
+.back-body {
+  height: calc(85.6mm - 1.25in);
+  padding: 0.14in;
   text-align: center;
-  font-size: 12px;
-  color: #666;
+  font-size: .1in;
+  position: relative;
+  z-index: 2;
 }
-.verify {
-  margin-top: 6px;
+
+/* WATERMARK */
+.watermark {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.watermark img {
+  max-width: 70%;
+  opacity: 0.12;
+}
+
+/* BACK TEXT */
+.back-pair {
+  margin-bottom: 0.06in;
+}
+
+.back-label {
+  font-size: .085in;
+}
+
+.back-value {
+  font-size: .1in;
   font-weight: bold;
-  color: #2f80ed;
+  margin-top: 2px;
+}
+
+/* SIGNATURES */
+.signatures {
+  position: absolute;
+  left: 0.14in;
+  right: 0.14in;
+  bottom: 0.42in;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 10px;
+  z-index: 3;
+}
+
+.signature-box {
+  width: 48%;
+  text-align: center;
+}
+
+.signature-box img {
+  max-width: 100%;
+  max-height: 0.30in;
+  margin-bottom: -4px;
+}
+
+.signature-label {
+  margin-top: 4px;
+  font-size: .08in;
+  font-weight: bold;
+}
+
+/* PRINT */
+@page {
+  size: A4;
+  margin: 20mm;
+}
+
+@media print {
+  body {
+    background: transparent;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20mm;
+  }
+  .controls { display: none; }
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<!-- FRONT -->
+<div class="card">
+  <div class="header">EMPLOYEE ID CARD</div>
 
-  <!-- WATERMARK -->
+  <div class="body">
+    <div class="grid">
+      <div>
+        <div class="photo"><img src="photo.jpg"></div>
+        <div class="barcode"><img src="barcode.png"></div>
+      </div>
+      <div>
+        <div class="pair"><div class="label">Name:</div><div class="value">ASHRAFUL ALAM</div></div>
+        <div class="pair"><div class="label">Position:</div><div class="value">Excavator Operator</div></div>
+        <div class="pair"><div class="label">Joined:</div><div class="value">25th AUG 2026</div></div>
+        <div class="pair"><div class="label">Employee Code:</div><div class="value">1729</div></div>
+        <div class="pair"><div class="label">Blood Group:</div><div class="value">O+ve</div></div>
+      </div>
+    </div>
+
+    <div class="bottom">
+      <div class="company">
+        <img src="nccl.png">
+        <div class="name">Nands Civil Contracting LTD.</div>
+      </div>
+      <div class="divider"></div>
+      <div class="qr"><img src="qrcode.png"></div>
+    </div>
+  </div>
+
+  <div class="footer">www.nccl.com</div>
+</div>
+
+<!-- BACK -->
+<div class="card">
+  <div class="header thin">IF FOUND, PLEASE RETURN THIS CARD TO THE OFFICE</div>
+
   <div class="watermark">
-    <img src="watermark.png" alt="Company Watermark">
+    <img src="watermark.png">
   </div>
 
-  <div class="content">
-
-    <div class="header">
-      <h1>Employee Verification Profile</h1>
-      <p>Four R Electrical & General Contractors LTD</p>
-    </div>
-
-    <div class="info-grid">
-      <div class="info-box">
-        <div class="label">Employee Name</div>
-        <div class="value">AJHARUL ISLAM</div>
-      </div>
-
-      <div class="info-box">
-        <div class="label">Position</div>
-        <div class="value">Excavator Operator</div>
-      </div>
-
-      <div class="info-box">
-        <div class="label">Experience</div>
-        <div class="value">1+ Years</div>
-      </div>
-
-      <div class="info-box">
-        <div class="label">Work Quality</div>
-        <div class="value">Excellent & Safe</div>
-      </div>
-    </div>
-
-    <div class="rating">
-      <div class="label">Performance Rating</div>
-      <div class="rating-stars">★★★★☆ 2.5 / 3</div>
-    </div>
-
-    <div class="statement">
-      <div class="statement-title">Official Employment Statement</div>
-      <div class="statement-text">
-        This is to certify that Mr. Ajharul Islam is employed with  
-        Four R Electrical & General Constractors LTD as an Excavator Operator.  
-        He has demonstrated strong professional skills, excellent safety awareness,  
-        and consistent performance in heavy machinery operations.  
-        His work attitude is disciplined, punctual, and reliable.  
-        Based on his overall performance and conduct, we consider him  
-        a competent and trustworthy employee of our organization.
-      </div>
-    </div>
-
-    <div class="footer">
-      This page is generated through official employee verification QR code.
-      <div class="verify">Verified by Four R Electrical & General Constractors LTD</div>
-    </div>
-
+  <div class="back-body">
+    <div class="back-pair"><div class="back-label">Address</div><div class="back-value">Votualevu Namak, Nadi</div></div>
+    <div class="back-pair"><div class="back-label">P. O. Box</div><div class="back-value">10542</div></div>
+    <div class="back-pair"><div class="back-label">Phone</div><div class="back-value">+679 9997781</div></div>
+    <div class="back-pair"><div class="back-label">Email</div><div class="back-value">nandscivil@connect.com.fj</div></div>
+    <div class="back-pair"><div class="back-label">Employee Phone</div><div class="back-value">+679 9358967</div></div>
   </div>
+
+  <div class="signatures">
+    <div class="signature-box">
+      <img src="manager-sign.png">
+      <div class="signature-label">Managing Signature</div>
+    </div>
+    <div class="signature-box">
+      <img src="operator-sign.png">
+      <div class="signature-label">Operator Signature</div>
+    </div>
+  </div>
+
+  <div class="footer back-footer">mhashrafulalam106@gmail.com</div>
+</div>
+
+<div class="controls">
+  <button onclick="window.print()">Download PDF</button>
 </div>
 
 </body>
