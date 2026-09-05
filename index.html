@@ -37,9 +37,9 @@ body {
 
 /* ===== FRONT HEADER ===== */
 .header {
-  background: #0f2a44;
+  background: #0f2a44;   /* PVC-friendly deep navy */
   color: #ffffff;
-  padding: 0.07in;
+  padding: 0.07in;       /* thinner */
   text-align: center;
   font-weight: bold;
   font-size: .17in;
@@ -60,9 +60,9 @@ body {
   left:0;
   right:0;
   bottom:0;
-  background:#0f2a44;
+  background:#0f2a44;   /* PVC-friendly */
   color:#ffffff;
-  padding: 0.045in;
+  padding: 0.045in;     /* thinner */
   text-align:center;
   font-size: .085in;
   font-weight:bold;
@@ -241,10 +241,7 @@ body {
     align-items: center;
     gap: 20mm;
   }
-
-  .controls {
-    display: none;
-  }
+  .controls { display: none; }
 }
 </style>
 </head>
@@ -258,40 +255,15 @@ body {
   <div class="body">
     <div class="grid">
       <div>
-        <div class="photo">
-          <img src="photo.jpg">
-        </div>
-
-        <div class="barcode">
-          <img src="barcode.png">
-        </div>
+        <div class="photo"><img src="photo.jpg"></div>
+        <div class="barcode"><img src="barcode.png"></div>
       </div>
-
       <div>
-        <div class="pair">
-          <div class="label">Name:</div>
-          <div class="value">ASHRAFUL ALAM</div>
-        </div>
-
-        <div class="pair">
-          <div class="label">Position:</div>
-          <div class="value">Excavator Operator</div>
-        </div>
-
-        <div class="pair">
-          <div class="label">Joined:</div>
-          <div class="value">25th AUG 2026</div>
-        </div>
-
-        <div class="pair">
-          <div class="label">Employee Code:</div>
-          <div class="value">1729</div>
-        </div>
-
-        <div class="pair">
-          <div class="label">Blood Group:</div>
-          <div class="value">O+ve</div>
-        </div>
+        <div class="pair"><div class="label">Name:</div><div class="value">ASHRAFUL ALAM</div></div>
+        <div class="pair"><div class="label">Position:</div><div class="value">Excavator Operator</div></div>
+        <div class="pair"><div class="label">Joined:</div><div class="value">25th AUG 2026</div></div>
+        <div class="pair"><div class="label">Employee Code:</div><div class="value">1729</div></div>
+        <div class="pair"><div class="label">Blood Group:</div><div class="value">O+ve</div></div>
       </div>
     </div>
 
@@ -300,138 +272,47 @@ body {
         <img src="nccl.png">
         <div class="name">Nands Civil Contracting LTD.</div>
       </div>
-
       <div class="divider"></div>
-
-      <div class="qr">
-        <img src="qrcode.png">
-      </div>
+      <div class="qr"><img src="qrcode.png"></div>
     </div>
   </div>
 
   <div class="footer">www.nccl.com</div>
 </div>
 
-
 <!-- BACK -->
 <div class="card">
-  <div class="header thin">
-    IF FOUND, PLEASE RETURN THIS CARD TO THE OFFICE
-  </div>
+  <div class="header thin">IF FOUND, PLEASE RETURN THIS CARD TO THE OFFICE</div>
 
   <div class="watermark">
     <img src="watermark.png">
   </div>
 
   <div class="back-body">
-    <div class="back-pair">
-      <div class="back-label">Address</div>
-      <div class="back-value">Votualevu Namak, Nadi</div>
-    </div>
-
-    <div class="back-pair">
-      <div class="back-label">P. O. Box</div>
-      <div class="back-value">10542</div>
-    </div>
-
-    <div class="back-pair">
-      <div class="back-label">Phone</div>
-      <div class="back-value">+679 9997781</div>
-    </div>
-
-    <div class="back-pair">
-      <div class="back-label">Email</div>
-      <div class="back-value">nandscivil@connect.com.fj</div>
-    </div>
-
-    <div class="back-pair">
-      <div class="back-label">Employee Phone</div>
-      <div class="back-value">+679 9358967</div>
-    </div>
+    <div class="back-pair"><div class="back-label">Address</div><div class="back-value">Votualevu Namak, Nadi</div></div>
+    <div class="back-pair"><div class="back-label">P. O. Box</div><div class="back-value">10542</div></div>
+    <div class="back-pair"><div class="back-label">Phone</div><div class="back-value">+679 9997781</div></div>
+    <div class="back-pair"><div class="back-label">Email</div><div class="back-value">nandscivil@connect.com.fj</div></div>
+    <div class="back-pair"><div class="back-label">Employee Phone</div><div class="back-value">+679 9358967</div></div>
   </div>
-
 
   <div class="signatures">
-
-    <!-- MANAGING SIGNATURE -->
     <div class="signature-box">
-      <img
-        id="managerSignature"
-        src="manager-sign.png"
-        alt="Managing Signature">
+      <img src="manager-sign.png">
       <div class="signature-label">Managing Signature</div>
     </div>
-
-
-    <!-- OPERATOR SIGNATURE -->
     <div class="signature-box">
-      <img
-        src="operator-sign.png"
-        alt="Operator Signature">
+      <img src="operator-sign.png">
       <div class="signature-label">Operator Signature</div>
     </div>
-
   </div>
 
-  <div class="footer back-footer">
-    mhashrafulalam106@gmail.com
-  </div>
+  <div class="footer back-footer">mhashrafulalam106@gmail.com</div>
 </div>
 
-
-<!-- MANAGING SIGNATURE PNG UPLOAD -->
 <div class="controls">
-
-  <label for="managerSignatureUpload">
-    Managing Signature PNG:
-  </label>
-
-  <input
-    type="file"
-    id="managerSignatureUpload"
-    accept="image/png,.png">
-
-  <button onclick="window.print()">
-    Download PDF
-  </button>
-
+  <button onclick="window.print()">Download PDF</button>
 </div>
-
-
-<!-- MANAGING SIGNATURE SCRIPT -->
-<script>
-document
-  .getElementById("managerSignatureUpload")
-  .addEventListener("change", function(event) {
-
-    const file = event.target.files[0];
-
-    if (!file) {
-      return;
-    }
-
-    /* Only PNG allowed */
-    if (file.type !== "image/png") {
-      alert("Please upload a PNG file.");
-      event.target.value = "";
-      return;
-    }
-
-    const reader = new FileReader();
-
-    reader.onload = function(e) {
-
-      const managerSignature =
-        document.getElementById("managerSignature");
-
-      managerSignature.src = e.target.result;
-
-    };
-
-    reader.readAsDataURL(file);
-
-  });
-</script>
 
 </body>
 </html>
