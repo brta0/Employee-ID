@@ -1,318 +1,380 @@
-<!DOCTYPE html>
-<html lang="bn">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>EMPLOYEE ID CARD</title>
+<!DOCTYPE html>  
+<html lang="bn">  
+<head>  
+<meta charset="utf-8" />  
+<meta name="viewport" content="width=device-width, initial-scale=1" />  
+<title>EMPLOYEE ID CARD</title>  
+  
+<style>  
+* {  
+  box-sizing: border-box;  
+  -webkit-print-color-adjust: exact;  
+  print-color-adjust: exact;  
+}  
+  
+body {  
+  margin: 0;  
+  background:#f0f3f7;  
+  display:flex;  
+  gap:20px;  
+  flex-wrap:wrap;  
+  justify-content:center;  
+  align-items:center;  
+  padding:20px;  
+  font-family: Arial, sans-serif;  
+}  
+  
+.card {  
+  width: 54mm;  
+  height: 85.6mm;  
+  background: #ffffff;  
+  position: relative;  
+  overflow: hidden;  
+  border-left: 0.8mm solid #0f2a44;  
+  border-right: 0.8mm solid #0f2a44;  
+}  
+  
+.header {  
+  background: #0f2a44;  
+  color: #ffffff;  
+  padding: 0.07in;  
+  text-align: center;  
+  font-weight: bold;  
+  font-size: .17in;  
+}  
+  
+.header.thin {  
+  background: #2c2c2c;  
+  color: #ffffff;  
+  padding: 0.07in;  
+  font-size: .1in;  
+  font-weight: normal;  
+}  
+  
+.footer {  
+  position:absolute;  
+  left:0;  
+  right:0;  
+  bottom:0;  
+  background:#0f2a44;  
+  color:#ffffff;  
+  padding: 0.045in;  
+  text-align:center;  
+  font-size: .085in;  
+  font-weight:bold;  
+}  
+  
+.footer.back-footer {  
+  background:#2c2c2c;  
+  color:#ffffff;  
+  padding: 0.04in;  
+  font-size: .075in;  
+  font-weight: normal;  
+}  
+  
+.body {  
+  padding: 0.10in 0.14in 0.12in;  
+}  
+  
+.grid {  
+  display:grid;  
+  grid-template-columns: 0.9in 1fr;  
+  gap: 0.08in;  
+}  
+  
+.photo {  
+  width: 100%;  
+  aspect-ratio: 3 / 4;  
+  background: #EAEAEA;  
+  padding: 6px 3px;  
+}  
+  
+.photo img {  
+  width:100%;  
+  height:100%;  
+  object-fit:cover;  
+}  
+  
+.barcode {  
+  margin-top: 0.04in;  
+}  
+  
+.barcode img {  
+  max-width: 1.0in;  
+  max-height: 0.3in;  
+}  
+  
+.label {  
+  font-size: .08in;  
+  color:#555;  
+}  
+  
+.value {  
+  font-size: .11in;  
+  font-weight: bold;  
+}  
+  
+.pair {  
+  margin: .035in 0;  
+}  
+  
+.bottom {  
+  margin-top: 0.08in;  
+  display: flex;  
+  justify-content: space-between;  
+  align-items: center;  
+}  
+  
+.company {  
+  text-align:center;  
+  width: 1.0in;  
+}  
+  
+.company img {  
+  max-width: 0.6in;  
+}  
+  
+.company .name {  
+  font-size: .095in;  
+  font-weight: bold;  
+}  
+  
+.divider {  
+  width: 1px;  
+  background: #ccc;  
+  height: 0.75in;  
+}  
+  
+.qr img {  
+  max-width: 0.65in;  
+}  
+  
+.back-body {  
+  height: calc(85.6mm - 1.25in);  
+  padding: 0.14in;  
+  text-align: center;  
+  font-size: .1in;  
+  position: relative;  
+  z-index: 2;  
+}  
+  
+.watermark {  
+  position: absolute;  
+  inset: 0;  
+  display: flex;  
+  justify-content: center;  
+  align-items: center;  
+  z-index: 1;  
+  pointer-events: none;  
+}  
+  
+.watermark img {  
+  max-width: 70%;  
+  opacity: 0.25;  
+}  
+  
+.back-pair {  
+  margin-bottom: 0.06in;  
+}  
+  
+.back-label {  
+  font-size: .085in;  
+}  
+  
+.back-value {  
+  font-size: .1in;  
+  font-weight: bold;  
+  margin-top: 2px;  
+}  
+  
+.signatures {  
+  position: absolute;  
+  left: 0.14in;  
+  right: 0.14in;  
+  bottom: 0.42in;  
+  display: flex;  
+  justify-content: space-between;  
+  align-items: flex-end;  
+  gap: 10px;  
+  z-index: 3;  
+}  
+  
+.signature-box {  
+  width: 48%;  
+  text-align: center;  
+}  
+  
+.signature-box img {  
+  max-width: 100%;  
+  max-height: 0.30in;  
+  margin-bottom: -4px;  
+}  
+  
+.signature-label {  
+  margin-top: 4px;  
+  font-size: .08in;  
+  font-weight: bold;  
+}  
+  
+@page {  
+  size: A4;  
+  margin: 20mm;  
+}  
+  
+@media print {  
+  body {  
+    background: transparent;  
+    padding: 0;  
+    display: flex;  
+    justify-content: center;  
+    align-items: center;  
+    gap: 20mm;  
+  }  
+  
+  .controls {  
+    display: none;  
+  }  
+}  
+</style>  
+</head>  
+  
+<body>  
+  
+<!-- FRONT -->  
+<div class="card">  
+  <div class="header">EMPLOYEE ID CARD</div>  
+  
+  <div class="body">  
+    <div class="grid">  
+      <div>  
+        <div class="photo"><img src="photo.jpg"></div>  
+        <div class="barcode"><img src="barcode.png"></div>  
+      </div>  
+  
+      <div>  
+        <div class="pair"><div class="label">Name:</div><div class="value">ASHRAFUL ALAM</div></div>  
+        <div class="pair"><div class="label">Position:</div><div class="value">Excavator Operator</div></div>  
+        <div class="pair"><div class="label">Joined:</div><div class="value">25th AUG 2026</div></div>  
+        <div class="pair"><div class="label">Employee Code:</div><div class="value">1729</div></div>  
+        <div class="pair"><div class="label">Blood Group:</div><div class="value">O+ve</div></div>  
+      </div>  
+    </div>  
+  
+    <div class="bottom">  
+      <div class="company">  
+        <img src="nccl.png">  
+        <div class="name">Nands Civil Contracting LTD.</div>  
+      </div>  
+  
+      <div class="divider"></div>  
+  
+      <div class="qr">  
+        <img src="qrcode.png">  
+      </div>  
+    </div>  
+  </div>  
+  
+  <div class="footer">www.nccl.com</div>  
+</div>  
+  
+  
+<!-- BACK -->  
+<div class="card">  
+  
+  <div class="header thin">  
+    IF FOUND, PLEASE RETURN THIS CARD TO THE OFFICE  
+  </div>  
+  
+  <div class="watermark">  
+    <img src="watermark.png">  
+  </div>  
+  
+  <div class="back-body">  
+    <div class="back-pair">  
+      <div class="back-label">Address</div>  
+      <div class="back-value">Votualevu Namak, Nadi</div>  
+    </div>  
+  
+    <div class="back-pair">  
+      <div class="back-label">P. O. Box</div>  
+      <div class="back-value">10542</div>  
+    </div>  
+  
+    <div class="back-pair">  
+      <div class="back-label">Phone</div>  
+      <div class="back-value">+679 9997781</div>  
+    </div>  
+  
+    <div class="back-pair">  
+      <div class="back-label">Email</div>  
+      <div class="back-value">nandscivil@connect.com.fj</div>  
+    </div>  
+  
+    <div class="back-pair">  
+      <div class="back-label">Employee Phone</div>  
+      <div class="back-value">+679 9358967</div>  
+    </div>  
+  </div>  
+  
+  
+  <div class="signatures">  
+  
+    <!-- MANAGING SIGNATURE -->  
+    <div class="signature-box">  
+      <img id="manager-signature" src="manager-sign.png" alt="Managing Signature">  
+      <div class="signature-label">Managing Signature</div>  
+    </div>  
+  
+  
+    <!-- OPERATOR SIGNATURE - আগের মতোই -->  
+    <div class="signature-box">  
+      <img src="operator-sign.png" alt="Operator Signature">  
+      <div class="signature-label">Operator Signature</div>  
+    </div>  
+  
+  </div>  
+  
+  <div class="footer back-footer">  
+    mhashrafulalam106@gmail.com  
+  </div>  
+  
+</div>  
+  
+  
+<!-- MANAGING SIGNATURE PNG UPLOAD -->  
+<div class="controls">  
+  
+  <input  
+    type="file"  
+    id="manager-sign-upload"  
+    accept="image/png,.png">  
+  
+  <button onclick="window.print()">  
+    Download PDF  
+  </button>  
+  
+</div>  
+  
+  
+<script>
+document.getElementById("manager-sign-upload").addEventListener("change", function () {
 
-<style>
-* {
-  box-sizing: border-box;
-  -webkit-print-color-adjust: exact;
-  print-color-adjust: exact;
-}
+  const file = this.files[0];
 
-body {
-  margin: 0;
-  background:#f0f3f7;
-  display:flex;
-  gap:20px;
-  flex-wrap:wrap;
-  justify-content:center;
-  align-items:center;
-  padding:20px;
-  font-family: Arial, sans-serif;
-}
+  if (!file) return;
 
-/* CARD */
-.card {
-  width: 54mm;
-  height: 85.6mm;
-  background: #ffffff;
-  position: relative;
-  overflow: hidden;
-  border-left: 0.8mm solid #0f2a44;
-  border-right: 0.8mm solid #0f2a44;
-}
+  const reader = new FileReader();
 
-/* ===== FRONT HEADER ===== */
-.header {
-  background: #0f2a44;   /* PVC-friendly deep navy */
-  color: #ffffff;
-  padding: 0.07in;       /* thinner */
-  text-align: center;
-  font-weight: bold;
-  font-size: .17in;
-}
+  reader.onload = function (e) {
 
-/* ===== BACK HEADER ===== */
-.header.thin {
-  background: #2c2c2c;
-  color: #ffffff;
-  padding: 0.07in;
-  font-size: .1in;
-  font-weight: normal;
-}
+    document.getElementById("manager-signature").src = e.target.result;
 
-/* ===== FRONT FOOTER ===== */
-.footer {
-  position:absolute;
-  left:0;
-  right:0;
-  bottom:0;
-  background:#0f2a44;   /* PVC-friendly */
-  color:#ffffff;
-  padding: 0.045in;     /* thinner */
-  text-align:center;
-  font-size: .085in;
-  font-weight:bold;
-}
+  };
 
-/* ===== BACK FOOTER ===== */
-.footer.back-footer {
-  background:#2c2c2c;
-  color:#ffffff;
-  padding: 0.04in;
-  font-size: .075in;
-  font-weight: normal;
-}
+  reader.readAsDataURL(file);
 
-/* FRONT BODY */
-.body {
-  padding: 0.10in 0.14in 0.12in;
-}
-
-.grid {
-  display:grid;
-  grid-template-columns: 0.9in 1fr;
-  gap: 0.08in;
-}
-
-.photo {
-  width: 100%;
-  aspect-ratio: 3 / 4;
-  background: #EAEAEA;
-  padding: 6px 3px;
-}
-
-.photo img {
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-.barcode {
-  margin-top: 0.04in;
-}
-
-.barcode img {
-  max-width: 1.0in;
-  max-height: 0.3in;
-}
-
-.label {
-  font-size: .08in;
-  color:#555;
-}
-
-.value {
-  font-size: .11in;
-  font-weight: bold;
-}
-
-.pair {
-  margin: .035in 0;
-}
-
-.bottom {
-  margin-top: 0.08in;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.company {
-  text-align:center;
-  width: 1.0in;
-}
-
-.company img {
-  max-width: 0.6in;
-}
-
-.company .name {
-  font-size: .095in;
-  font-weight: bold;
-}
-
-.divider {
-  width: 1px;
-  background: #ccc;
-  height: 0.75in;
-}
-
-.qr img {
-  max-width: 0.65in;
-}
-
-/* BACK BODY */
-.back-body {
-  height: calc(85.6mm - 1.25in);
-  padding: 0.14in;
-  text-align: center;
-  font-size: .1in;
-  position: relative;
-  z-index: 2;
-}
-
-/* WATERMARK */
-.watermark {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1;
-  pointer-events: none;
-}
-
-.watermark img {
-  max-width: 70%;
-  opacity: 0.25;
-}
-
-/* BACK TEXT */
-.back-pair {
-  margin-bottom: 0.06in;
-}
-
-.back-label {
-  font-size: .085in;
-}
-
-.back-value {
-  font-size: .1in;
-  font-weight: bold;
-  margin-top: 2px;
-}
-
-/* SIGNATURES */
-.signatures {
-  position: absolute;
-  left: 0.14in;
-  right: 0.14in;
-  bottom: 0.42in;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 10px;
-  z-index: 3;
-}
-
-.signature-box {
-  width: 48%;
-  text-align: center;
-}
-
-.signature-box img {
-  max-width: 100%;
-  max-height: 0.30in;
-  margin-bottom: -4px;
-}
-
-.signature-label {
-  margin-top: 4px;
-  font-size: .08in;
-  font-weight: bold;
-}
-
-/* PRINT */
-@page {
-  size: A4;
-  margin: 20mm;
-}
-
-@media print {
-  body {
-    background: transparent;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20mm;
-  }
-  .controls { display: none; }
-}
-</style>
-</head>
-
-<body>
-
-<!-- FRONT -->
-<div class="card">
-  <div class="header">EMPLOYEE ID CARD</div>
-
-  <div class="body">
-    <div class="grid">
-      <div>
-        <div class="photo"><img src="photo.jpg"></div>
-        <div class="barcode"><img src="barcode.png"></div>
-      </div>
-      <div>
-        <div class="pair"><div class="label">Name:</div><div class="value">ASHRAFUL ALAM</div></div>
-        <div class="pair"><div class="label">Position:</div><div class="value">Excavator Operator</div></div>
-        <div class="pair"><div class="label">Joined:</div><div class="value">25th AUG 2026</div></div>
-        <div class="pair"><div class="label">Employee Code:</div><div class="value">1729</div></div>
-        <div class="pair"><div class="label">Blood Group:</div><div class="value">O+ve</div></div>
-      </div>
-    </div>
-
-    <div class="bottom">
-      <div class="company">
-        <img src="nccl.png">
-        <div class="name">Nands Civil Contracting LTD.</div>
-      </div>
-      <div class="divider"></div>
-      <div class="qr"><img src="qrcode.png"></div>
-    </div>
-  </div>
-
-  <div class="footer">www.nccl.com</div>
-</div>
-
-<!-- BACK -->
-<div class="card">
-  <div class="header thin">IF FOUND, PLEASE RETURN THIS CARD TO THE OFFICE</div>
-
-  <div class="watermark">
-    <img src="watermark.png">
-  </div>
-
-  <div class="back-body">
-    <div class="back-pair"><div class="back-label">Address</div><div class="back-value">Votualevu Namak, Nadi</div></div>
-    <div class="back-pair"><div class="back-label">P. O. Box</div><div class="back-value">10542</div></div>
-    <div class="back-pair"><div class="back-label">Phone</div><div class="back-value">+679 9997781</div></div>
-    <div class="back-pair"><div class="back-label">Email</div><div class="back-value">nandscivil@connect.com.fj</div></div>
-    <div class="back-pair"><div class="back-label">Employee Phone</div><div class="back-value">+679 9358967</div></div>
-  </div>
-
-  <div class="signatures">
-    <div class="signature-box">
-      <img src="manager-sign.png">
-      <div class="signature-label">Managing Signature</div>
-    </div>
-    <div class="signature-box">
-      <img src="operator-sign.png">
-      <div class="signature-label">Operator Signature</div>
-    </div>
-  </div>
-
-  <div class="footer back-footer">mhashrafulalam106@gmail.com</div>
-</div>
-
-<div class="controls">
-  <button onclick="window.print()">Download PDF</button>
-</div>
-
-</body>
+});
+</script>
+  
+</body>  
 </html>
